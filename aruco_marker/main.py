@@ -1,8 +1,34 @@
 import cv2
 import depthai as dai
 import numpy as np
+from utils import ARUCO_DICT
 
 winName = "Aruco Marker Detection"
+
+def pose_estimation(frame, aruco_dict_type):
+
+    '''
+    frame - Frame from the video stream
+    aruco_dict_type - ArUCo tag type
+    return:
+    frame - The frame with the axis drawn on it
+    '''
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    aruco_dict = cv2.aruco.getPredefinedDictionary(aruco_dict_type)
+    parameters = cv2.aruco.DetectorParameters()
+    
+    corners, ids, rejected_img_points = cv2.aruco.detectMarkers(gray, aruco_dict, parameters=parameters)
+
+    # If markers are detected
+    if len(corners) > 0:
+        for i in range(0, len(ids)):
+            # Draw a square around the markers
+            cv2.aruco.drawDetectedMarkers(frame, corners) 
+
+            # Draw Axis
+            # cv2.aruco.drawAxis(frame, np.eye(3), np.zeros(5), corners[i], 0.01)  
+
+    return frame
 
 parameters = cv2.aruco.DetectorParameters()
 parameters.minDistanceToBorder = 7
@@ -21,7 +47,7 @@ parameters.minCornerDistanceRate = 0.09167132584946237
 
 dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_5X5_50)
 # dictionary = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_ARUCO_ORIGINAL)
-
+aruco_dict_type = ARUCO_DICT["DICT_5X5_50"]
 detected_markers = {}
 frame_counter = 0
 
@@ -48,6 +74,7 @@ with dai.Device(pipeline) as device:
                 print('frame: {} ids: None'.format(frame_counter))
 
             im_out = cv2.aruco.drawDetectedMarkers(frame, markerCorners, markerIds)
+            im_out = pose_estimation(im_out, aruco_dict_type)
             cv2.imshow(winName, im_out)
 
             if cv2.waitKey(1) == ord('q'):
