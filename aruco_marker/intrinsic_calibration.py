@@ -1,8 +1,3 @@
-'''
-Sample Usage:-
-python calibration.py --dir calibration_checkerboard/ --square_size 0.024
-'''
-
 import numpy as np
 import cv2
 import os
@@ -43,6 +38,8 @@ def calibrate(dirpath, square_size, width, height, visualize=False):
 
             # Draw and display the corners
             img = cv2.drawChessboardCorners(img, (width, height), corners2, ret)
+        else:
+            print(f"Checkerboard not found in image {fname}.")
 
         if visualize:
             cv2.imshow('img',img)
