@@ -127,51 +127,51 @@ if __name__ == '__main__':
         json.dump(coordinate_data, f, indent=4)
 
     # Plot and save the time elapsed vs frames graph
-    # plt.plot(frame_times)
-    # plt.xlabel('Frames')
-    # plt.ylabel('Time Delta (s)')
-    # plt.title('Time Elapsed vs Frames')
-    # plt.savefig('time_elapsed_vs_frames.png')
-    # # plt.show()
+    plt.plot(frame_times)
+    plt.xlabel('Frames')
+    plt.ylabel('Time Delta (s)')
+    plt.title('Time Elapsed vs Frames')
+    plt.savefig('time_elapsed_vs_frames.png')
+    # plt.show()
 
-    # # Plot and save the x, y, z coordinates vs frames graphs
-    # plt.figure(figsize=(12, 8))
-    # plt.subplot(3, 1, 1)
-    # plt.plot(x_coords, label='X Coordinate')
-    # plt.legend(loc='upper right')
-    # plt.ylabel('X Coordinate (m)')
+    # Plot and save the x, y, z coordinates vs frames graphs
+    plt.figure(figsize=(12, 8))
+    plt.subplot(3, 1, 1)
+    plt.plot(x_coords, label='X Coordinate')
+    plt.legend(loc='upper right')
+    plt.ylabel('X Coordinate (m)')
 
-    # plt.subplot(3, 1, 2)
-    # plt.plot(y_coords, label='Y Coordinate')
-    # plt.legend(loc='upper right')
-    # plt.ylabel('Y Coordinate (m)')
+    plt.subplot(3, 1, 2)
+    plt.plot(y_coords, label='Y Coordinate')
+    plt.legend(loc='upper right')
+    plt.ylabel('Y Coordinate (m)')
 
-    # plt.subplot(3, 1, 3)
-    # plt.plot(z_coords, label='Z Coordinate')
-    # plt.legend(loc='upper right')
-    # plt.xlabel('Frames')
-    # plt.ylabel('Z Coordinate (m)')
+    plt.subplot(3, 1, 3)
+    plt.plot(z_coords, label='Z Coordinate')
+    plt.legend(loc='upper right')
+    plt.xlabel('Frames')
+    plt.ylabel('Z Coordinate (m)')
 
-    # plt.suptitle('Marker Translation Coordinates vs Frames')
-    # plt.savefig('translation_coordinates_vs_frames.png')
-    # # plt.show()
+    plt.suptitle('Marker Translation Coordinates vs Frames')
+    plt.savefig('translation_coordinates_vs_frames.png')
+    # plt.show()
 
-    # plt.figure(figsize=(12, 8))
-    # ax = plt.axes(projection='3d')  # Create a new 3D axes
+    plt.figure(figsize=(12, 8))
+    ax = plt.axes(projection='3d')  # Create a new 3D axes
 
-    # # Data for a three-dimensional scatter
-    # ax.scatter3D(x_coords, y_coords, z_coords, c=z_coords, cmap='YlGn')
+    # Data for a three-dimensional scatter
+    ax.scatter3D(x_coords, y_coords, z_coords, c=z_coords, cmap='YlGn')
 
-    # ax.set_xlabel('X Coordinate (m)')
-    # ax.set_ylabel('Y Coordinate (m)')
-    # ax.set_zlabel('Z Coordinate (m)')
-    # plt.title('3D Scatter Plot of ArUco Marker Movement')
+    ax.set_xlabel('X Coordinate (m)')
+    ax.set_ylabel('Y Coordinate (m)')
+    ax.set_zlabel('Z Coordinate (m)')
+    plt.title('3D Scatter Plot of ArUco Marker Movement')
 
-    # # Save the figure
-    # plt.savefig('3d_scatter_plot.png')
+    # Save the figure
+    plt.savefig('3d_scatter_plot.png')
 
     # Show the plot
-    # plt.show()
+    plt.show()
 
     orientation_data = {
         'roll': roll_list,
@@ -184,26 +184,26 @@ if __name__ == '__main__':
         json.dump(orientation_data, f, indent=4)
 
     # Plot and save the orientation changes vs frames graphs
-    # plt.figure(figsize=(12, 8))
-    # plt.subplot(3, 1, 1)
-    # plt.plot(roll_list, label='Roll')
-    # plt.legend(loc='upper right')
-    # plt.ylabel('Roll (rad)')
+    plt.figure(figsize=(12, 8))
+    plt.subplot(3, 1, 1)
+    plt.plot(roll_list, label='Roll')
+    plt.legend(loc='upper right')
+    plt.ylabel('Roll (rad)')
 
-    # plt.subplot(3, 1, 2)
-    # plt.plot(pitch_list, label='Pitch')
-    # plt.legend(loc='upper right')
-    # plt.ylabel('Pitch (rad)')
+    plt.subplot(3, 1, 2)
+    plt.plot(pitch_list, label='Pitch')
+    plt.legend(loc='upper right')
+    plt.ylabel('Pitch (rad)')
 
-    # plt.subplot(3, 1, 3)
-    # plt.plot(yaw_list, label='Yaw')
-    # plt.legend(loc='upper right')
-    # plt.xlabel('Frames')
-    # plt.ylabel('Yaw (rad)')
+    plt.subplot(3, 1, 3)
+    plt.plot(yaw_list, label='Yaw')
+    plt.legend(loc='upper right')
+    plt.xlabel('Frames')
+    plt.ylabel('Yaw (rad)')
 
-    # plt.suptitle('Marker Orientation Changes vs Frames')
-    # plt.savefig('orientation_changes_vs_frames.png')
-    # plt.show()
+    plt.suptitle('Marker Orientation Changes vs Frames')
+    plt.savefig('orientation_changes_vs_frames.png')
+    plt.show()
 
     np.save('R_lists.npy',R_list)
 
