@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import argparse
 from utils import ARUCO_DICT
 import depthai as dai
-from mpl_toolkits.mplot3d import Axes3D
+
 
 R_list = []
 def get_euler_angles(rvec):
@@ -127,12 +127,13 @@ if __name__ == '__main__':
         json.dump(coordinate_data, f, indent=4)
 
     # Plot and save the time elapsed vs frames graph
+        
     # plt.plot(frame_times)
     # plt.xlabel('Frames')
     # plt.ylabel('Time Delta (s)')
     # plt.title('Time Elapsed vs Frames')
     # plt.savefig('time_elapsed_vs_frames.png')
-    # # plt.show()
+    # plt.show()
 
     # # Plot and save the x, y, z coordinates vs frames graphs
     # plt.figure(figsize=(12, 8))
@@ -154,7 +155,7 @@ if __name__ == '__main__':
 
     # plt.suptitle('Marker Translation Coordinates vs Frames')
     # plt.savefig('translation_coordinates_vs_frames.png')
-    # # plt.show()
+    # plt.show()
 
     # plt.figure(figsize=(12, 8))
     # ax = plt.axes(projection='3d')  # Create a new 3D axes
@@ -170,7 +171,7 @@ if __name__ == '__main__':
     # # Save the figure
     # plt.savefig('3d_scatter_plot.png')
 
-    # Show the plot
+    # # Show the plot
     # plt.show()
 
     orientation_data = {
@@ -184,6 +185,7 @@ if __name__ == '__main__':
         json.dump(orientation_data, f, indent=4)
 
     # Plot and save the orientation changes vs frames graphs
+        
     # plt.figure(figsize=(12, 8))
     # plt.subplot(3, 1, 1)
     # plt.plot(roll_list, label='Roll')
